@@ -16,6 +16,9 @@
 		2262FECE26ED0DBA00357EB6 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FECD26ED0DBA00357EB6 /* StepsView.swift */; };
 		2262FED226ED124400357EB6 /* StepDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FED126ED124400357EB6 /* StepDataProviderTests.swift */; };
 		2262FED426ED12AE00357EB6 /* StepDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FED326ED12AE00357EB6 /* StepDataProvider.swift */; };
+		2262FED626ED19DA00357EB6 /* MockStepDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FED526ED19DA00357EB6 /* MockStepDataProvider.swift */; };
+		2262FED826ED1ACF00357EB6 /* MockPedometerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FED726ED1ACF00357EB6 /* MockPedometerData.swift */; };
+		2262FEDC26ED1B7000357EB6 /* StepData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEDB26ED1B7000357EB6 /* StepData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		2262FECD26ED0DBA00357EB6 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		2262FED126ED124400357EB6 /* StepDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDataProviderTests.swift; sourceTree = "<group>"; };
 		2262FED326ED12AE00357EB6 /* StepDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDataProvider.swift; sourceTree = "<group>"; };
+		2262FED526ED19DA00357EB6 /* MockStepDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStepDataProvider.swift; sourceTree = "<group>"; };
+		2262FED726ED1ACF00357EB6 /* MockPedometerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPedometerData.swift; sourceTree = "<group>"; };
+		2262FEDB26ED1B7000357EB6 /* StepData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,9 +146,28 @@
 		2262FED026ED110B00357EB6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				2262FED326ED12AE00357EB6 /* StepDataProvider.swift */,
+				2262FED926ED1B5600357EB6 /* Protocols */,
+				2262FEDA26ED1B6300357EB6 /* Mocks */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		2262FED926ED1B5600357EB6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				2262FED326ED12AE00357EB6 /* StepDataProvider.swift */,
+				2262FEDB26ED1B7000357EB6 /* StepData.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		2262FEDA26ED1B6300357EB6 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2262FED526ED19DA00357EB6 /* MockStepDataProvider.swift */,
+				2262FED726ED1ACF00357EB6 /* MockPedometerData.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,7 +303,10 @@
 				2262FECE26ED0DBA00357EB6 /* StepsView.swift in Sources */,
 				2262FBFF26ECF7DD00357EB6 /* StepsViewController.swift in Sources */,
 				2262FBFB26ECF7DD00357EB6 /* AppDelegate.swift in Sources */,
+				2262FED626ED19DA00357EB6 /* MockStepDataProvider.swift in Sources */,
 				2262FECB26ED0A4300357EB6 /* SceneDelegate.swift in Sources */,
+				2262FED826ED1ACF00357EB6 /* MockPedometerData.swift in Sources */,
+				2262FEDC26ED1B7000357EB6 /* StepData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
