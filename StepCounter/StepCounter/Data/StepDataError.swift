@@ -8,8 +8,10 @@
 import Foundation
 
 enum StepDataError: Error {
-	// No step data available for given date range
+	/// No step data available for given date range
 	case invalidDate
-	// Can't provide steps because we are not authorized to access user step data
+	/// Can't provide steps because we are not authorized to access user step data
 	case notAuthorized
+	/// Step counting isn't available on the current device
+	case notAvailable
 }

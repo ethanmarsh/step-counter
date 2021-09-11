@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import CoreMotion
 
 protocol StepData {
 	var numberOfSteps: NSNumber { get }
 }
+
+extension CMPedometerData: StepData {}

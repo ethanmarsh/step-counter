@@ -11,7 +11,7 @@ import XCTest
 class StepDataProviderTests: XCTestCase {
 	
 	var calendar: Calendar!
-	var stepDataProvider: StepDataProvider!
+	var stepDataProvider: MockStepDataProvider!
 
     override func setUpWithError() throws {
 		self.calendar = Calendar.current
@@ -34,19 +34,14 @@ class StepDataProviderTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 	
+	// MARK: Valid Cases
+	
 	func testProvidesStepsForToday() throws {
 		self.stepDataProvider.getStepData(forDayFromToday: 0) { data, error in
 			XCTAssertNil(error)
 			XCTAssertNotNil(data)
 			
 			XCTAssertEqual(data?.numberOfSteps, 0)
-		}
-	}
-	
-	func testDoesNotProvideStepsForDateOlderThan10Days() throws {
-		self.stepDataProvider.getStepData(forDayFromToday: 1000) { data, error in
-			XCTAssertNil(data)
-			XCTAssertNotNil(error)
 		}
 	}
 	
@@ -76,6 +71,42 @@ class StepDataProviderTests: XCTestCase {
 			XCTAssertNotNil(data)
 			
 			XCTAssertEqual(data?.numberOfSteps, 900)
+		}
+	}
+	
+	// MARK: Invalid cases
+	
+	func testDoesNotProvideStepsForDateOlderThan10Days() throws {
+		self.stepDataProvider.getStepData(forDayFromToday: 1000) { data, error in
+			XCTAssertNil(data)
+			XCTAssertNotNil(error)
+			if let stepError = error as? StepDataError {
+				XCTAssertEqual(stepError, StepDataError.invalidDate)
+			}
+		}
+	}
+	
+	func testDoesNotProvideStepsWhenCountingIsNotAvailable() throws {
+		self.stepDataProvider.isStepCountingAvailable = false
+		
+		self.stepDataProvider.getStepData(forDayFromToday: 0) { data, error in
+			XCTAssertNil(data)
+			XCTAssertNotNil(error)
+			if let stepError = error as? StepDataError {
+				XCTAssertEqual(stepError, StepDataError.notAvailable)
+			}
+		}
+	}
+	
+	func testDoesNotProvideStepsWhenNotAuthorized() throws {
+		self.stepDataProvider.isAuthorizedForStepData = false
+		
+		self.stepDataProvider.getStepData(forDayFromToday: 0) { data, error in
+			XCTAssertNil(data)
+			XCTAssertNotNil(error)
+			if let stepError = error as? StepDataError {
+				XCTAssertEqual(stepError, StepDataError.notAuthorized)
+			}
 		}
 	}
 }
