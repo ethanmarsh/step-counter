@@ -19,6 +19,7 @@
 		2262FED626ED19DA00357EB6 /* MockStepDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FED526ED19DA00357EB6 /* MockStepDataProvider.swift */; };
 		2262FED826ED1ACF00357EB6 /* MockPedometerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FED726ED1ACF00357EB6 /* MockPedometerData.swift */; };
 		2262FEDC26ED1B7000357EB6 /* StepData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEDB26ED1B7000357EB6 /* StepData.swift */; };
+		2262FEDE26ED2E6C00357EB6 /* StepDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEDD26ED2E6C00357EB6 /* StepDataError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		2262FED526ED19DA00357EB6 /* MockStepDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStepDataProvider.swift; sourceTree = "<group>"; };
 		2262FED726ED1ACF00357EB6 /* MockPedometerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPedometerData.swift; sourceTree = "<group>"; };
 		2262FEDB26ED1B7000357EB6 /* StepData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepData.swift; sourceTree = "<group>"; };
+		2262FEDD26ED2E6C00357EB6 /* StepDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDataError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				2262FED926ED1B5600357EB6 /* Protocols */,
 				2262FEDA26ED1B6300357EB6 /* Mocks */,
+				2262FEDD26ED2E6C00357EB6 /* StepDataError.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				2262FED426ED12AE00357EB6 /* StepDataProvider.swift in Sources */,
 				2262FECE26ED0DBA00357EB6 /* StepsView.swift in Sources */,
 				2262FBFF26ECF7DD00357EB6 /* StepsViewController.swift in Sources */,
+				2262FEDE26ED2E6C00357EB6 /* StepDataError.swift in Sources */,
 				2262FBFB26ECF7DD00357EB6 /* AppDelegate.swift in Sources */,
 				2262FED626ED19DA00357EB6 /* MockStepDataProvider.swift in Sources */,
 				2262FECB26ED0A4300357EB6 /* SceneDelegate.swift in Sources */,

@@ -8,12 +8,22 @@
 import Foundation
 import CoreMotion
 
+typealias StepDictionary = [Date: StepData]
+
 class MockStepDataProvider: StepDataProvider {
-	let stepData: StepData = {
-		MockPedometerData(numberOfSteps: 50)
-	}()
+	let stepDictionary: StepDictionary
+	
+	init(stepDictionary: StepDictionary) {
+		self.stepDictionary = stepDictionary
+	}
 	
 	func getStepData(from: Date, to: Date, _ completion: (StepData?, Error?) -> Void) {
-		completion(self.stepData, nil)
+		guard let stepData = self.stepDictionary[from] else {
+			// No step data found for given date
+			completion(nil, StepDataError.invalidDate)
+			return
+		}
+		
+		completion(stepData, nil)
 	}
 }
