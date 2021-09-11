@@ -12,14 +12,6 @@ class StepDataProviderTests: XCTestCase {
 	
 	var calendar: Calendar!
 	var stepDataProvider: StepDataProvider!
-	
-	static func createOldDate() -> Date? {
-		var components = DateComponents()
-		components.year = 2020
-		components.month = 1
-		components.day = 1
-		return Calendar.current.date(from: components)
-	}
 
     override func setUpWithError() throws {
 		self.calendar = Calendar.current
@@ -43,7 +35,7 @@ class StepDataProviderTests: XCTestCase {
     }
 	
 	func testProvidesStepsForToday() throws {
-		self.stepDataProvider.getStepData(from: calendar.startOfDay(for: Date()), to: Date()) { data, error in
+		self.stepDataProvider.getStepData(forDayFromToday: 0) { data, error in
 			XCTAssertNil(error)
 			XCTAssertNotNil(data)
 			
@@ -52,18 +44,22 @@ class StepDataProviderTests: XCTestCase {
 	}
 	
 	func testDoesNotProvideStepsForDateOlderThan10Days() throws {
-		guard let oldDate = Self.createOldDate() else {
-			XCTFail("Failed to create Date object for an old invalid date")
-			return
-		}
-		
-		self.stepDataProvider.getStepData(from: calendar.startOfDay(for: oldDate), to: oldDate) { data, error in
+		self.stepDataProvider.getStepData(forDayFromToday: 1000) { data, error in
 			XCTAssertNil(data)
 			XCTAssertNotNil(error)
 		}
 	}
 	
-	func testProvidesStepsFor9DaysAgo() throws {
+	func testProvidesStepsFor9DaysAgoUsingDaysFromToday() throws {
+		self.stepDataProvider.getStepData(forDayFromToday: 9) { data, error in
+			XCTAssertNil(error)
+			XCTAssertNotNil(data)
+			
+			XCTAssertEqual(data?.numberOfSteps, 900)
+		}
+	}
+	
+	func testProvidesStepsFor9DaysAgoUsingDateRange() throws {
 		let startOfToday = calendar.startOfDay(for: Date())
 		guard let startOfDayNine = calendar.date(byAdding: .day, value: -9, to: startOfToday) else {
 			XCTFail("Failed to create Date object for start of day 9")
