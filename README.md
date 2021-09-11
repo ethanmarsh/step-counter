@@ -1,2 +1,2 @@
 # step-counter
-Displays the last 10 days worth of pedometer data
+Small sample app that displays the last 10 days worth of pedometer data
