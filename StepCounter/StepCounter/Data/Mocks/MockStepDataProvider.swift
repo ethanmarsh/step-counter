@@ -12,7 +12,7 @@ typealias StepDictionary = [Date: StepData]
 
 class MockStepDataProvider: StepDataProvider {
 	var isStepCountingAvailable = true
-	
+	var hasAskedForAuthorization = true
 	var isAuthorizedForStepData = true
 	
 	let stepDictionary: StepDictionary
@@ -27,7 +27,7 @@ class MockStepDataProvider: StepDataProvider {
 			return
 		}
 		
-		if !self.isAuthorizedForStepData {
+		if !self.isAuthorizedForStepData, self.hasAskedForAuthorization {
 			completion(nil, StepDataError.notAuthorized)
 			return
 		}

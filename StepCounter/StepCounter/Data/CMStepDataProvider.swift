@@ -13,6 +13,10 @@ class CMStepDataProvider: StepDataProvider {
 		CMPedometer.isStepCountingAvailable()
 	}
 	
+	var hasAskedForAuthorization: Bool {
+		CMPedometer.authorizationStatus() != .notDetermined
+	}
+	
 	var isAuthorizedForStepData: Bool {
 		CMPedometer.authorizationStatus() == .authorized
 	}
@@ -25,7 +29,7 @@ class CMStepDataProvider: StepDataProvider {
 			return
 		}
 		
-		if !self.isAuthorizedForStepData {
+		if !self.isAuthorizedForStepData, self.hasAskedForAuthorization {
 			completion(nil, StepDataError.notAuthorized)
 			return
 		}

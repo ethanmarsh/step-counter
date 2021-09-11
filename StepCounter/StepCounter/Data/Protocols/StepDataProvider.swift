@@ -12,7 +12,7 @@ typealias StepDataHandler = (StepData?, Error?) -> Void
 
 protocol StepDataProvider {
 	var isStepCountingAvailable: Bool { get }
-	
+	var hasAskedForAuthorization: Bool { get }
 	var isAuthorizedForStepData: Bool { get }
 	
 	/// Provides step data for the entire given day, as compared to the current day.
