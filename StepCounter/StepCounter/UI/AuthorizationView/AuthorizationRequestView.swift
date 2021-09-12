@@ -21,7 +21,7 @@ class AuthorizationRequestView: UIView {
 		let stackView = UIStackView()
 		stackView.axis = .vertical
 		stackView.alignment = .center
-		stackView.spacing = 16
+		stackView.spacing = StyleConstants.stackViewSpacing
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		return stackView
 	}()
@@ -32,8 +32,8 @@ class AuthorizationRequestView: UIView {
 		label.text = "This app requires access to your motion data in order to run.\nPlease go to Settings and enable access."
 		label.numberOfLines = 0
 		label.textAlignment = .center
-		label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
-		label.textColor = .yellow
+		label.font = StyleConstants.normalFont
+		label.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -45,7 +45,7 @@ class AuthorizationRequestView: UIView {
 		
 		let attributes = [
 			NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24),
-			NSAttributedString.Key.foregroundColor: UIColor.white,
+			NSAttributedString.Key.foregroundColor: ColorUtils.textColor(isLightMode: self.isInLightMode),
 		]
 		let string = NSAttributedString(
 			string: "GRANT ACCESS",
@@ -54,8 +54,8 @@ class AuthorizationRequestView: UIView {
 		button.setAttributedTitle(string, for: .normal)
 		
 		button.layer.borderWidth = 2
-		button.layer.borderColor = UIColor.white.cgColor
-		button.layer.cornerRadius = 20
+		button.layer.borderColor = ColorUtils.textColor(isLightMode: self.isInLightMode).cgColor
+		button.layer.cornerRadius = StyleConstants.roundedButtonRadius
 		return button
 	}()
 	

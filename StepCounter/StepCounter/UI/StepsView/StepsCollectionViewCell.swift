@@ -18,8 +18,8 @@ class StepsCollectionViewCell: UICollectionViewCell {
 	private lazy var dateLabel: UILabel = {
 		let label = UILabel()
 		label.text = "Date"
-		label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
-		label.textColor = .yellow
+		label.font = StyleConstants.normalFont
+		label.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -27,8 +27,8 @@ class StepsCollectionViewCell: UICollectionViewCell {
 	private lazy var stepsLabel: UILabel = {
 		let label = UILabel()
 		label.text = Constants.stepsLabelFormat + "0"
-		label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
-		label.textColor = .yellow
+		label.font = StyleConstants.normalFont
+		label.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -53,14 +53,15 @@ class StepsCollectionViewCell: UICollectionViewCell {
 	// MARK: Private
 	
 	private func configureUI() {
-		self.backgroundColor = .purple.withAlphaComponent(0.6)
+		self.backgroundColor = ColorUtils.normalBackgroundColor(isInLightMode: self.isInLightMode)
+		self.layer.cornerRadius = StyleConstants.standardCornerRadius
 		
 		self.addSubview(self.dateLabel)
-		self.dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+		self.dateLabel.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor).isActive = true
 		self.dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 		
 		self.addSubview(self.stepsLabel)
-		self.stepsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+		self.stepsLabel.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor).isActive = true
 		self.stepsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 	}
 	

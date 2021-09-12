@@ -31,6 +31,9 @@
 		2262FEF626EE783D00357EB6 /* AuthorizationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEF526EE783D00357EB6 /* AuthorizationRequestView.swift */; };
 		2262FEF826EE7FF400357EB6 /* AuthorizationDeniedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEF726EE7FF400357EB6 /* AuthorizationDeniedViewController.swift */; };
 		2262FEFA26EE800500357EB6 /* AuthorizationDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEF926EE800500357EB6 /* AuthorizationDeniedView.swift */; };
+		2262FEFF26EE8B9F00357EB6 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEFE26EE8B9F00357EB6 /* ColorUtils.swift */; };
+		2262FF0126EE8D1F00357EB6 /* UIView+LightMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FF0026EE8D1F00357EB6 /* UIView+LightMode.swift */; };
+		2262FF0326EE941C00357EB6 /* StyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FF0226EE941C00357EB6 /* StyleConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,9 @@
 		2262FEF526EE783D00357EB6 /* AuthorizationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestView.swift; sourceTree = "<group>"; };
 		2262FEF726EE7FF400357EB6 /* AuthorizationDeniedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationDeniedViewController.swift; sourceTree = "<group>"; };
 		2262FEF926EE800500357EB6 /* AuthorizationDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationDeniedView.swift; sourceTree = "<group>"; };
+		2262FEFE26EE8B9F00357EB6 /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		2262FF0026EE8D1F00357EB6 /* UIView+LightMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LightMode.swift"; sourceTree = "<group>"; };
+		2262FF0226EE941C00357EB6 /* StyleConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +208,10 @@
 		2262FEE726EE5C8300357EB6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2262FEFE26EE8B9F00357EB6 /* ColorUtils.swift */,
 				2262FEE826EE5C9000357EB6 /* DateUtils.swift */,
+				2262FF0226EE941C00357EB6 /* StyleConstants.swift */,
+				2262FF0026EE8D1F00357EB6 /* UIView+LightMode.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -371,12 +380,14 @@
 				2262FECE26ED0DBA00357EB6 /* StepsView.swift in Sources */,
 				2262FBFF26ECF7DD00357EB6 /* StepsViewController.swift in Sources */,
 				2262FEEF26EE76CE00357EB6 /* AppController.swift in Sources */,
+				2262FF0326EE941C00357EB6 /* StyleConstants.swift in Sources */,
 				2262FEF626EE783D00357EB6 /* AuthorizationRequestView.swift in Sources */,
 				2262FEEB26EE5F6D00357EB6 /* StepsDetailView.swift in Sources */,
 				2262FEE926EE5C9000357EB6 /* DateUtils.swift in Sources */,
 				2262FEE226EE30E400357EB6 /* StepsCollectionViewCell.swift in Sources */,
 				2262FEDE26ED2E6C00357EB6 /* StepDataError.swift in Sources */,
 				2262FBFB26ECF7DD00357EB6 /* AppDelegate.swift in Sources */,
+				2262FF0126EE8D1F00357EB6 /* UIView+LightMode.swift in Sources */,
 				2262FEE626EE596300357EB6 /* StepsViewModel.swift in Sources */,
 				2262FED626ED19DA00357EB6 /* MockStepDataProvider.swift in Sources */,
 				2262FEE026ED390500357EB6 /* CMStepDataProvider.swift in Sources */,
@@ -385,6 +396,7 @@
 				2262FED826ED1ACF00357EB6 /* MockPedometerData.swift in Sources */,
 				2262FEF826EE7FF400357EB6 /* AuthorizationDeniedViewController.swift in Sources */,
 				2262FEED26EE5F9600357EB6 /* StepsDetailViewController.swift in Sources */,
+				2262FEFF26EE8B9F00357EB6 /* ColorUtils.swift in Sources */,
 				2262FEDC26ED1B7000357EB6 /* StepData.swift in Sources */,
 				2262FEF426EE77FB00357EB6 /* AuthorizationRequestViewController.swift in Sources */,
 			);

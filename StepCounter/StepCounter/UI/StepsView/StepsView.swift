@@ -121,7 +121,7 @@ extension StepsView: UICollectionViewDelegate {
 			return
 		}
 		
-		cell.backgroundColor = .cyan
+		cell.backgroundColor = ColorUtils.highlighedBackgroundColor(isInLightMode: self.isInLightMode)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
@@ -129,7 +129,7 @@ extension StepsView: UICollectionViewDelegate {
 			return
 		}
 		
-		cell.backgroundColor = .purple.withAlphaComponent(0.6)
+		cell.backgroundColor = ColorUtils.normalBackgroundColor(isInLightMode: self.isInLightMode)
 	}
 }
 

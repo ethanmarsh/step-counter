@@ -14,8 +14,8 @@ class AuthorizationDeniedView: UIView {
 		label.text = "This app requires access to your motion data in order to run.\nPlease go to Settings and enable access."
 		label.numberOfLines = 0
 		label.textAlignment = .center
-		label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
-		label.textColor = .yellow
+		label.font = StyleConstants.normalFont
+		label.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
