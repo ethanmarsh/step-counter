@@ -15,6 +15,9 @@ protocol StepDataProvider {
 	var hasAskedForAuthorization: Bool { get }
 	var isAuthorizedForStepData: Bool { get }
 	
+	/// Requests access to motion data. If we have already asked for auth, the completion block will be called immediately with the current auth status
+	func requestAuthorization(completion: @escaping (Bool) -> Void)
+	
 	/// Provides step data for the entire given day, as compared to the current day.
 	/// For example,  0 will return data for today, 1 for yesterday, 2 for 2 days ago, etc.
 	/// When getting data for today, the range will be from the start of the day until the current moment.

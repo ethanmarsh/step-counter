@@ -38,6 +38,10 @@ class MockStepDataProvider: StepDataProvider {
 		self.init(stepDictionary: stepDictionary)
 	}
 	
+	func requestAuthorization(completion: @escaping (Bool) -> Void) {
+		completion(self.isAuthorizedForStepData)
+	}
+	
 	func getStepData(from: Date, to: Date, _ completion: @escaping StepDataHandler) {
 		if !self.isStepCountingAvailable {
 			completion(nil, StepDataError.notAvailable)

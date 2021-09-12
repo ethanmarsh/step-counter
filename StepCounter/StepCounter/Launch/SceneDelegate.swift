@@ -10,13 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	var window: UIWindow?
 	
-	lazy var viewController: StepsViewController = {
-		StepsViewController()
-	}()
-	
-	lazy var navigationController: UINavigationController = {
-		UINavigationController()
-	}()
+	private let appController = AppController()
 
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		// Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -26,10 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		
 		let window = UIWindow(frame: windowScene.coordinateSpace.bounds)
 		window.windowScene = windowScene
-		window.rootViewController = self.navigationController
+		window.rootViewController = self.appController.rootViewController
 		window.makeKeyAndVisible()
-		
-		self.navigationController.setViewControllers([self.viewController], animated: false)
 		
 		self.window = window
 	}

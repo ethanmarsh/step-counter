@@ -8,22 +8,21 @@
 import UIKit
 
 class StepsViewController: UIViewController {
+	
+	weak var coordinator: Coordinator?
+	
 	private lazy var stepsView: StepsView = {
 		let stepsView = StepsView(stepDataProvider: self.stepDataProvider)
 		stepsView.delegate = self
 		return stepsView
 	}()
 	
-	private lazy var stepDataProvider: StepDataProvider = {
-		let realProvider = CMStepDataProvider()
-		if realProvider.isStepCountingAvailable {
-			return realProvider
-		} else {
-			return MockStepDataProvider()
-		}
-	}()
+	private let stepDataProvider: StepDataProvider
 	
-	init() {
+	init(stepDataProvider: StepDataProvider, coordinator: Coordinator) {
+		self.stepDataProvider = stepDataProvider
+		self.coordinator = coordinator
+		
 		super.init(nibName: nil, bundle: nil)
 		self.configureUI()
 	}
@@ -44,6 +43,22 @@ class StepsViewController: UIViewController {
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.title = "Step Counter"
 		self.navigationController?.navigationBar.sizeToFit()
+	}
+	
+	private func configureNotifications() {
+		let notificationCenter = NotificationCenter.default
+		notificationCenter.addObserver(
+			self,
+			selector: #selector(self.applicationWillEnterForeground),
+			name: UIApplication.willEnterForegroundNotification,
+			object: nil
+		)
+	}
+	
+	@objc private func applicationWillEnterForeground() {
+		if !self.stepDataProvider.isAuthorizedForStepData {
+			self.coordinator?.reloadPrimaryViewController()
+		}
 	}
 }
 

@@ -23,6 +23,18 @@ class CMStepDataProvider: StepDataProvider {
 	
 	let pedometer = CMPedometer()
 	
+	func requestAuthorization(completion: @escaping (Bool) -> Void) {
+		if self.hasAskedForAuthorization {
+			completion(self.isAuthorizedForStepData)
+			return
+		}
+		
+		self.pedometer.queryPedometerData(from: Date(), to: Date()) { [weak self] data, error in
+			guard let self = self else { return }
+			completion(self.isAuthorizedForStepData)
+		}
+	}
+	
 	func getStepData(from: Date, to: Date, _ completion: @escaping StepDataHandler) {
 		if !self.isStepCountingAvailable {
 			completion(nil, StepDataError.notAvailable)

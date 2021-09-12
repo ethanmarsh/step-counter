@@ -26,6 +26,11 @@
 		2262FEE926EE5C9000357EB6 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEE826EE5C9000357EB6 /* DateUtils.swift */; };
 		2262FEEB26EE5F6D00357EB6 /* StepsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEEA26EE5F6D00357EB6 /* StepsDetailView.swift */; };
 		2262FEED26EE5F9600357EB6 /* StepsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEEC26EE5F9600357EB6 /* StepsDetailViewController.swift */; };
+		2262FEEF26EE76CE00357EB6 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEEE26EE76CE00357EB6 /* AppController.swift */; };
+		2262FEF426EE77FB00357EB6 /* AuthorizationRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEF326EE77FB00357EB6 /* AuthorizationRequestViewController.swift */; };
+		2262FEF626EE783D00357EB6 /* AuthorizationRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEF526EE783D00357EB6 /* AuthorizationRequestView.swift */; };
+		2262FEF826EE7FF400357EB6 /* AuthorizationDeniedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEF726EE7FF400357EB6 /* AuthorizationDeniedViewController.swift */; };
+		2262FEFA26EE800500357EB6 /* AuthorizationDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEF926EE800500357EB6 /* AuthorizationDeniedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +75,11 @@
 		2262FEE826EE5C9000357EB6 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		2262FEEA26EE5F6D00357EB6 /* StepsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsDetailView.swift; sourceTree = "<group>"; };
 		2262FEEC26EE5F9600357EB6 /* StepsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsDetailViewController.swift; sourceTree = "<group>"; };
+		2262FEEE26EE76CE00357EB6 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		2262FEF326EE77FB00357EB6 /* AuthorizationRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestViewController.swift; sourceTree = "<group>"; };
+		2262FEF526EE783D00357EB6 /* AuthorizationRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRequestView.swift; sourceTree = "<group>"; };
+		2262FEF726EE7FF400357EB6 /* AuthorizationDeniedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationDeniedViewController.swift; sourceTree = "<group>"; };
+		2262FEF926EE800500357EB6 /* AuthorizationDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationDeniedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,12 +152,9 @@
 		2262FECC26ED0D9C00357EB6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				2262FEE126EE30E400357EB6 /* StepsCollectionViewCell.swift */,
-				2262FEEA26EE5F6D00357EB6 /* StepsDetailView.swift */,
-				2262FEEC26EE5F9600357EB6 /* StepsDetailViewController.swift */,
-				2262FECD26ED0DBA00357EB6 /* StepsView.swift */,
-				2262FEE526EE596300357EB6 /* StepsViewModel.swift */,
-				2262FBFE26ECF7DD00357EB6 /* StepsViewController.swift */,
+				2262FEF226EE77E000357EB6 /* AuthorizationView */,
+				2262FEF026EE77BB00357EB6 /* DetailView */,
+				2262FEF126EE77D600357EB6 /* StepsView */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -157,6 +164,7 @@
 			children = (
 				2262FBFA26ECF7DD00357EB6 /* AppDelegate.swift */,
 				2262FECA26ED0A4300357EB6 /* SceneDelegate.swift */,
+				2262FEEE26EE76CE00357EB6 /* AppController.swift */,
 				2262FC0526ECF7DF00357EB6 /* LaunchScreen.storyboard */,
 			);
 			path = Launch;
@@ -197,6 +205,37 @@
 				2262FEE826EE5C9000357EB6 /* DateUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2262FEF026EE77BB00357EB6 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				2262FEEA26EE5F6D00357EB6 /* StepsDetailView.swift */,
+				2262FEEC26EE5F9600357EB6 /* StepsDetailViewController.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		2262FEF126EE77D600357EB6 /* StepsView */ = {
+			isa = PBXGroup;
+			children = (
+				2262FEE126EE30E400357EB6 /* StepsCollectionViewCell.swift */,
+				2262FECD26ED0DBA00357EB6 /* StepsView.swift */,
+				2262FEE526EE596300357EB6 /* StepsViewModel.swift */,
+				2262FBFE26ECF7DD00357EB6 /* StepsViewController.swift */,
+			);
+			path = StepsView;
+			sourceTree = "<group>";
+		};
+		2262FEF226EE77E000357EB6 /* AuthorizationView */ = {
+			isa = PBXGroup;
+			children = (
+				2262FEF526EE783D00357EB6 /* AuthorizationRequestView.swift */,
+				2262FEF326EE77FB00357EB6 /* AuthorizationRequestViewController.swift */,
+				2262FEF926EE800500357EB6 /* AuthorizationDeniedView.swift */,
+				2262FEF726EE7FF400357EB6 /* AuthorizationDeniedViewController.swift */,
+			);
+			path = AuthorizationView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +370,8 @@
 				2262FED426ED12AE00357EB6 /* StepDataProvider.swift in Sources */,
 				2262FECE26ED0DBA00357EB6 /* StepsView.swift in Sources */,
 				2262FBFF26ECF7DD00357EB6 /* StepsViewController.swift in Sources */,
+				2262FEEF26EE76CE00357EB6 /* AppController.swift in Sources */,
+				2262FEF626EE783D00357EB6 /* AuthorizationRequestView.swift in Sources */,
 				2262FEEB26EE5F6D00357EB6 /* StepsDetailView.swift in Sources */,
 				2262FEE926EE5C9000357EB6 /* DateUtils.swift in Sources */,
 				2262FEE226EE30E400357EB6 /* StepsCollectionViewCell.swift in Sources */,
@@ -339,10 +380,13 @@
 				2262FEE626EE596300357EB6 /* StepsViewModel.swift in Sources */,
 				2262FED626ED19DA00357EB6 /* MockStepDataProvider.swift in Sources */,
 				2262FEE026ED390500357EB6 /* CMStepDataProvider.swift in Sources */,
+				2262FEFA26EE800500357EB6 /* AuthorizationDeniedView.swift in Sources */,
 				2262FECB26ED0A4300357EB6 /* SceneDelegate.swift in Sources */,
 				2262FED826ED1ACF00357EB6 /* MockPedometerData.swift in Sources */,
+				2262FEF826EE7FF400357EB6 /* AuthorizationDeniedViewController.swift in Sources */,
 				2262FEED26EE5F9600357EB6 /* StepsDetailViewController.swift in Sources */,
 				2262FEDC26ED1B7000357EB6 /* StepData.swift in Sources */,
+				2262FEF426EE77FB00357EB6 /* AuthorizationRequestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
