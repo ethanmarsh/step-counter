@@ -10,4 +10,8 @@ import CoreMotion
 
 struct MockPedometerData: StepData {
 	var numberOfSteps: NSNumber
+	var distance: NSNumber?
+	var floorsAscended: NSNumber?
+	var floorsDescended: NSNumber?
+	var averageActivePace: NSNumber?
 } 

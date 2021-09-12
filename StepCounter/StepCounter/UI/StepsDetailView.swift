@@ -11,13 +11,13 @@ import UIKit
 class StepsDetailView: UIView {
 	private let viewModel: StepsViewModel
 	
-	private lazy var stepsLabel: UILabel = {
-		let label = UILabel()
-		label.text = "Number of steps - \(self.viewModel.numberOfSteps)"
-		label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
-		label.textColor = .yellow
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
+	private lazy var stackView: UIStackView = {
+		let stackView = UIStackView()
+		stackView.axis = .vertical
+		stackView.alignment = .center
+		stackView.spacing = 16
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		return stackView
 	}()
 	
 	init(viewModel: StepsViewModel) {
@@ -32,8 +32,40 @@ class StepsDetailView: UIView {
 	
 	// MARK: Private
 	private func configureUI() {
-		self.addSubview(self.stepsLabel)
-		self.stepsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-		self.stepsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+		self.addSubview(self.stackView)
+		self.stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+		self.stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+		
+		let stepsText = "Number of steps - \(self.viewModel.numberOfSteps)"
+		self.stackView.addArrangedSubview(Self.createLabel(with: stepsText))
+		
+		if let distance = self.viewModel.stepData.distance {
+			let distanceText = String(format: "Distance - %.2f meters", distance.floatValue)
+			self.stackView.addArrangedSubview(Self.createLabel(with: distanceText))
+		}
+		
+		if let pace = self.viewModel.stepData.averageActivePace {
+			let paceText = String(format: "Pace - %.2f meters/second", pace.floatValue)
+			self.stackView.addArrangedSubview(Self.createLabel(with: paceText))
+		}
+		
+		if let floorsAscended = self.viewModel.stepData.floorsAscended {
+			let floorsUpText = "Floors ascended - \(floorsAscended)"
+			self.stackView.addArrangedSubview(Self.createLabel(with: floorsUpText))
+		}
+		
+		if let floorsDescended = self.viewModel.stepData.floorsDescended {
+			let floorsDownText = "Floors descended - \(floorsDescended)"
+			self.stackView.addArrangedSubview(Self.createLabel(with: floorsDownText))
+		}
+	}
+	
+	private static func createLabel(with text: String) -> UILabel {
+		let label = UILabel()
+		label.text = text
+		label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+		label.textColor = .yellow
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
 	}
 } 
