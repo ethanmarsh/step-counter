@@ -60,12 +60,16 @@ class StepsCollectionViewCell: UICollectionViewCell {
 		self.layer.cornerRadius = StyleConstants.standardCornerRadius
 		
 		self.addSubview(self.dateLabel)
-		self.dateLabel.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor).isActive = true
-		self.dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+		NSLayoutConstraint.activate([
+			self.dateLabel.leadingAnchor.constraint(equalTo: self.layoutMarginsGuide.leadingAnchor),
+			self.dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+		])
 		
 		self.addSubview(self.stepsLabel)
-		self.stepsLabel.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor).isActive = true
-		self.stepsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+		NSLayoutConstraint.activate([
+			self.stepsLabel.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor),
+			self.stepsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+		])
 		
 		self.updateColors()
 	}

@@ -36,9 +36,12 @@ class AuthorizationDeniedView: UIView {
 	
 	private func configureUI() {
 		self.addSubview(self.deniedLabel)
-		self.deniedLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-		self.deniedLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-		self.deniedLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75).isActive = true
+		NSLayoutConstraint.activate([
+			self.deniedLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			self.deniedLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+			self.deniedLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75),
+		])
+		
 		self.updateColors()
 	}
 	

@@ -52,10 +52,10 @@ class StepsDetailView: UIView {
 		self.addSubview(self.container)
 		
 		self.container.addSubview(self.stackView)
-		self.stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-		self.stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 		
 		NSLayoutConstraint.activate([
+			self.stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			self.stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
 			self.container.leadingAnchor.constraint(equalTo: self.stackView.leadingAnchor, constant: -Constants.containerMargin),
 			self.container.trailingAnchor.constraint(equalTo: self.stackView.trailingAnchor, constant: Constants.containerMargin),
 			self.container.topAnchor.constraint(equalTo: self.stackView.topAnchor, constant: -Constants.containerMargin),

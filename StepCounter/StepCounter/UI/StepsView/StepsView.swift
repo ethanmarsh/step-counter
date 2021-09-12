@@ -18,7 +18,8 @@ class StepsView: UIView {
 		static let collectionViewItemSpacing: CGFloat = 16
 		static let collectionViewHorizontalMargins: CGFloat = 32
 		
-		static let numberOfDaysToDisplay = 10
+		// According to Apple's docs, CMPedometer only stores the last 7 days worth of data
+		static let numberOfDaysToDisplay = 7
 	}
 	
 	weak var delegate: StepsViewDelegate?
@@ -73,10 +74,12 @@ class StepsView: UIView {
 		)
 		
 		self.addSubview(collectionView)
-		collectionView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
-		collectionView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1).isActive = true
-		collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
-		collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+		NSLayoutConstraint.activate([
+			collectionView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1),
+			collectionView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1),
+			collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+			collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+		])
 	}
 }
 

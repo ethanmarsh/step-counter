@@ -65,14 +65,18 @@ class AuthorizationRequestView: UIView {
 		self.backgroundColor = .systemBackground
 		
 		self.addSubview(self.stackView)
-		self.stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-		self.stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+		NSLayoutConstraint.activate([
+			self.stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+			self.stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+		])
 		
 		self.stackView.addArrangedSubview(self.requestLabel)
 		self.stackView.addArrangedSubview(self.requestButton)
 		
-		self.requestLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75).isActive = true
-		self.requestButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75).isActive = true
+		NSLayoutConstraint.activate([
+			self.requestLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75),
+			self.requestButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75),
+		])
 		
 		self.updateColors()
 	}
