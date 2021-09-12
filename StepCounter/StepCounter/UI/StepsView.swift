@@ -87,6 +87,7 @@ extension StepsView: UICollectionViewDataSource {
 			}
 			DispatchQueue.main.async {
 				cell.set(numberOfSteps: stepData.numberOfSteps.intValue)
+				cell.setDayCountingBackFromToday(indexPath.row)
 			}
 		}
 		
