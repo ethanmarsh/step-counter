@@ -17,7 +17,6 @@ class StepsDetailView: UIView {
 	
 	private lazy var container: UIView = {
 		let container = UIView()
-		container.backgroundColor = ColorUtils.normalBackgroundColor(isInLightMode: self.isInLightMode)
 		container.layer.cornerRadius = StyleConstants.standardCornerRadius
 		container.translatesAutoresizingMaskIntoConstraints = false
 		return container
@@ -42,6 +41,10 @@ class StepsDetailView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	func refreshUI() {
+		self.updateColors()
+	}
+	
 	// MARK: Private
 	private func configureUI() {
 		self.backgroundColor = .systemBackground
@@ -61,27 +64,46 @@ class StepsDetailView: UIView {
 		
 		let isLightMode = self.isInLightMode
 		
-		let stepsText = "Number of steps - \(self.viewModel.numberOfSteps)"
+		let stepsText = "Number of steps: \(self.viewModel.numberOfSteps)"
 		self.stackView.addArrangedSubview(Self.createLabel(with: stepsText, lightMode: isLightMode))
 		
 		if let distance = self.viewModel.stepData.distance {
-			let distanceText = String(format: "Distance - %.2f meters", distance.floatValue)
+			let distanceText = String(format: "Distance: %.2f meters", distance.floatValue)
 			self.stackView.addArrangedSubview(Self.createLabel(with: distanceText, lightMode: isLightMode))
 		}
 		
 		if let pace = self.viewModel.stepData.averageActivePace {
-			let paceText = String(format: "Pace - %.2f meters/second", pace.floatValue)
+			let paceText = String(format: "Pace: %.2f meters/second", pace.floatValue)
 			self.stackView.addArrangedSubview(Self.createLabel(with: paceText, lightMode: isLightMode))
 		}
 		
 		if let floorsAscended = self.viewModel.stepData.floorsAscended {
-			let floorsUpText = "Floors ascended - \(floorsAscended)"
+			let floorsUpText = "Floors ascended: \(floorsAscended)"
 			self.stackView.addArrangedSubview(Self.createLabel(with: floorsUpText, lightMode: isLightMode))
 		}
 		
 		if let floorsDescended = self.viewModel.stepData.floorsDescended {
-			let floorsDownText = "Floors descended - \(floorsDescended)"
+			let floorsDownText = "Floors descended: \(floorsDescended)"
 			self.stackView.addArrangedSubview(Self.createLabel(with: floorsDownText, lightMode: isLightMode))
+		}
+		
+		self.updateColors()
+	}
+	
+	private func updateColors() {
+		UIView.animate(withDuration: 0.5) { [weak self] in
+			guard let self = self else { return }
+			let isLightMode = self.isInLightMode
+			
+			self.container.backgroundColor = ColorUtils.normalBackgroundColor(isInLightMode: isLightMode)
+			self.stackView.arrangedSubviews.forEach { view in
+				guard let label = view as? UILabel else {
+					print("Error - Expected to have UILabels in this stack view")
+					return
+				}
+				
+				label.textColor = ColorUtils.textColor(isLightMode: isLightMode)
+			}
 		}
 	}
 	
@@ -89,7 +111,6 @@ class StepsDetailView: UIView {
 		let label = UILabel()
 		label.text = text
 		label.font = StyleConstants.normalFont
-		label.textColor = ColorUtils.textColor(isLightMode: lightMode)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}

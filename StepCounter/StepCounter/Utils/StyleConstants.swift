@@ -10,6 +10,7 @@ import UIKit
 
 struct StyleConstants {
 	static let normalFont = UIFont.systemFont(ofSize: 24, weight: .semibold)
+	static let buttonFont = UIFont.systemFont(ofSize: 24)
 	static let standardCornerRadius: CGFloat = 10
 	static let roundedButtonRadius: CGFloat = 20
 	static let stackViewSpacing: CGFloat = 16

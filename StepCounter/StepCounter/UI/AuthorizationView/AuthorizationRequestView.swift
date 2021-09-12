@@ -33,28 +33,14 @@ class AuthorizationRequestView: UIView {
 		label.numberOfLines = 0
 		label.textAlignment = .center
 		label.font = StyleConstants.normalFont
-		label.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
 	private lazy var requestButton: UIButton = {
 		let button = UIButton(type: .roundedRect)
-		
 		button.addTarget(self, action: #selector(didPressGrantAccessButton), for: .touchUpInside)
-		
-		let attributes = [
-			NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24),
-			NSAttributedString.Key.foregroundColor: ColorUtils.textColor(isLightMode: self.isInLightMode),
-		]
-		let string = NSAttributedString(
-			string: "GRANT ACCESS",
-			attributes: attributes as [NSAttributedString.Key: AnyObject]?
-		)
-		button.setAttributedTitle(string, for: .normal)
-		
 		button.layer.borderWidth = 2
-		button.layer.borderColor = ColorUtils.textColor(isLightMode: self.isInLightMode).cgColor
 		button.layer.cornerRadius = StyleConstants.roundedButtonRadius
 		return button
 	}()
@@ -69,9 +55,15 @@ class AuthorizationRequestView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	func refreshUI() {
+		self.updateColors()
+	}
+	
 	// MARK: Private
 	
 	private func configureUI() {
+		self.backgroundColor = .systemBackground
+		
 		self.addSubview(self.stackView)
 		self.stackView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
 		self.stackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
@@ -81,6 +73,22 @@ class AuthorizationRequestView: UIView {
 		
 		self.requestLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75).isActive = true
 		self.requestButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75).isActive = true
+		
+		self.updateColors()
+	}
+	
+	private func updateColors() {
+		self.requestLabel.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
+		let attributes = [
+			NSAttributedString.Key.font: StyleConstants.buttonFont,
+			NSAttributedString.Key.foregroundColor: ColorUtils.textColor(isLightMode: self.isInLightMode),
+		]
+		let string = NSAttributedString(
+			string: "GRANT ACCESS",
+			attributes: attributes as [NSAttributedString.Key: AnyObject]?
+		)
+		self.requestButton.setAttributedTitle(string, for: .normal)
+		self.requestButton.layer.borderColor = ColorUtils.textColor(isLightMode: self.isInLightMode).cgColor
 	}
 	
 	@objc private func didPressGrantAccessButton() {

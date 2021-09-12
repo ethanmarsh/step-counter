@@ -19,6 +19,7 @@ class StepsDetailViewController: UIViewController {
 		self.viewModel = viewModel
 		super.init(nibName: nil, bundle: nil)
 		self.configureUI()
+		self.configureNotifications()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -30,5 +31,19 @@ class StepsDetailViewController: UIViewController {
 	private func configureUI() {
 		self.view = self.detailView
 		self.title = DateUtils.naturalLanguageDate(from: self.viewModel.dayIndex)
+	}
+	
+	private func configureNotifications() {
+		let notificationCenter = NotificationCenter.default
+		notificationCenter.addObserver(
+			self, 
+			selector: #selector(applicationDidBecomeActive), 
+			name: UIApplication.didBecomeActiveNotification, 
+			object: nil
+		)
+	}
+	
+	@objc private func applicationDidBecomeActive() {
+		self.detailView.refreshUI()
 	}
 }

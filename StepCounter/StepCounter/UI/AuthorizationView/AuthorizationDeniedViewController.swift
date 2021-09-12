@@ -46,11 +46,21 @@ class AuthorizationDeniedViewController: UIViewController {
 			name: UIApplication.willEnterForegroundNotification,
 			object: nil
 		)
+		notificationCenter.addObserver(
+			self, 
+			selector: #selector(applicationDidBecomeActive), 
+			name: UIApplication.didBecomeActiveNotification, 
+			object: nil
+		)
 	}
 	
 	@objc private func applicationWillEnterForeground() {
 		if self.stepDataProvider.isAuthorizedForStepData {
 			self.coordinator?.reloadPrimaryViewController()
 		}
+	}
+	
+	@objc private func applicationDidBecomeActive() {
+		self.deniedView.refreshUI()
 	}
 }

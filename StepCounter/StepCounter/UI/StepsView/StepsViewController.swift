@@ -25,16 +25,17 @@ class StepsViewController: UIViewController {
 		
 		super.init(nibName: nil, bundle: nil)
 		self.configureUI()
+		self.configureNotifications()
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		self.stepsView.refreshUI()
 	}
-
 
 	// MARK: Private
 	
@@ -53,12 +54,22 @@ class StepsViewController: UIViewController {
 			name: UIApplication.willEnterForegroundNotification,
 			object: nil
 		)
+		notificationCenter.addObserver(
+			self, 
+			selector: #selector(applicationDidBecomeActive), 
+			name: UIApplication.didBecomeActiveNotification, 
+			object: nil
+		)
 	}
 	
 	@objc private func applicationWillEnterForeground() {
 		if !self.stepDataProvider.isAuthorizedForStepData {
 			self.coordinator?.reloadPrimaryViewController()
 		}
+	}
+	
+	@objc private func applicationDidBecomeActive() {
+		self.stepsView.refreshUI()
 	}
 }
 

@@ -40,6 +40,16 @@ class StepsView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	func refreshUI() {
+		self.collectionView.visibleCells.forEach { cell in
+			guard let cell = cell as? StepsCollectionViewCell else {
+				return
+			}
+			
+			cell.refreshUI()
+		}
+	}
+	
 	// MARK: Private
 	
 	private func configureUI() {

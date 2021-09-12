@@ -10,7 +10,7 @@ import UIKit
 
 class StepsCollectionViewCell: UICollectionViewCell {
 	private struct Constants {
-		static let stepsLabelFormat = "Steps - "
+		static let stepsLabelFormat = " steps"
 	}
 	
 	var viewModel: StepsViewModel?
@@ -19,16 +19,16 @@ class StepsCollectionViewCell: UICollectionViewCell {
 		let label = UILabel()
 		label.text = "Date"
 		label.font = StyleConstants.normalFont
-		label.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
+		
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
 	
 	private lazy var stepsLabel: UILabel = {
 		let label = UILabel()
-		label.text = Constants.stepsLabelFormat + "0"
+		label.text = "0" + Constants.stepsLabelFormat
 		label.font = StyleConstants.normalFont
-		label.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
+		
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -50,10 +50,13 @@ class StepsCollectionViewCell: UICollectionViewCell {
 		self.viewModel = viewModel
 	}
 	
+	func refreshUI() {
+		self.updateColors()
+	}
+	
 	// MARK: Private
 	
 	private func configureUI() {
-		self.backgroundColor = ColorUtils.normalBackgroundColor(isInLightMode: self.isInLightMode)
 		self.layer.cornerRadius = StyleConstants.standardCornerRadius
 		
 		self.addSubview(self.dateLabel)
@@ -63,10 +66,21 @@ class StepsCollectionViewCell: UICollectionViewCell {
 		self.addSubview(self.stepsLabel)
 		self.stepsLabel.trailingAnchor.constraint(equalTo: self.layoutMarginsGuide.trailingAnchor).isActive = true
 		self.stepsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+		
+		self.updateColors()
+	}
+	
+	private func updateColors() {
+		UIView.animate(withDuration: 0.5) { [weak self] in
+			guard let self = self else { return }
+			self.backgroundColor = ColorUtils.normalBackgroundColor(isInLightMode: self.isInLightMode)
+			self.dateLabel.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
+			self.stepsLabel.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
+		}
 	}
 	
 	private func set(numberOfSteps: Int) {
-		self.stepsLabel.text = Constants.stepsLabelFormat + "\(numberOfSteps)"
+		self.stepsLabel.text = "\(numberOfSteps)" + Constants.stepsLabelFormat
 	}
 	
 	private func setDayCountingBackFromToday(_ day: Int) {

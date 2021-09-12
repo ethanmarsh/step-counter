@@ -48,11 +48,21 @@ class AuthorizationRequestViewController: UIViewController {
 			name: UIApplication.willEnterForegroundNotification,
 			object: nil
 		)
+		notificationCenter.addObserver(
+			self, 
+			selector: #selector(applicationDidBecomeActive), 
+			name: UIApplication.didBecomeActiveNotification, 
+			object: nil
+		)
 	}
 	
 	@objc private func applicationWillEnterForeground() {
 		self.coordinator?.reloadPrimaryViewController()
 	} 
+	
+	@objc private func applicationDidBecomeActive() {
+		self.requestView.refreshUI()
+	}
 }
 
 extension AuthorizationRequestViewController: AuthorizationRequestDelegate {

@@ -15,7 +15,6 @@ class AuthorizationDeniedView: UIView {
 		label.numberOfLines = 0
 		label.textAlignment = .center
 		label.font = StyleConstants.normalFont
-		label.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}()
@@ -29,6 +28,10 @@ class AuthorizationDeniedView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	func refreshUI() {
+		self.updateColors()
+	}
+	
 	// MARK: Private
 	
 	private func configureUI() {
@@ -36,5 +39,10 @@ class AuthorizationDeniedView: UIView {
 		self.deniedLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
 		self.deniedLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
 		self.deniedLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.75).isActive = true
+		self.updateColors()
+	}
+	
+	private func updateColors() {
+		self.deniedLabel.textColor = ColorUtils.textColor(isLightMode: self.isInLightMode)
 	}
 }
