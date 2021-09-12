@@ -11,7 +11,6 @@
 		2262FBFF26ECF7DD00357EB6 /* StepsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FBFE26ECF7DD00357EB6 /* StepsViewController.swift */; };
 		2262FC0426ECF7DF00357EB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2262FC0326ECF7DF00357EB6 /* Assets.xcassets */; };
 		2262FC0726ECF7DF00357EB6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2262FC0526ECF7DF00357EB6 /* LaunchScreen.storyboard */; };
-		2262FC1226ECF7DF00357EB6 /* StepCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FC1126ECF7DF00357EB6 /* StepCounterTests.swift */; };
 		2262FECB26ED0A4300357EB6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FECA26ED0A4300357EB6 /* SceneDelegate.swift */; };
 		2262FECE26ED0DBA00357EB6 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FECD26ED0DBA00357EB6 /* StepsView.swift */; };
 		2262FED226ED124400357EB6 /* StepDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FED126ED124400357EB6 /* StepDataProviderTests.swift */; };
@@ -61,7 +60,6 @@
 		2262FC0626ECF7DF00357EB6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2262FC0826ECF7DF00357EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2262FC0D26ECF7DF00357EB6 /* StepCounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StepCounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2262FC1126ECF7DF00357EB6 /* StepCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCounterTests.swift; sourceTree = "<group>"; };
 		2262FC1326ECF7DF00357EB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2262FC1826ECF7DF00357EB6 /* StepCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StepCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2262FECA26ED0A4300357EB6 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 		2262FC1026ECF7DF00357EB6 /* StepCounterTests */ = {
 			isa = PBXGroup;
 			children = (
-				2262FC1126ECF7DF00357EB6 /* StepCounterTests.swift */,
 				2262FED126ED124400357EB6 /* StepDataProviderTests.swift */,
 				2262FC1326ECF7DF00357EB6 /* Info.plist */,
 			);
@@ -407,7 +404,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2262FED226ED124400357EB6 /* StepDataProviderTests.swift in Sources */,
-				2262FC1226ECF7DF00357EB6 /* StepCounterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
