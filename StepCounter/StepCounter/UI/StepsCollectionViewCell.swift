@@ -79,6 +79,8 @@ class StepsCollectionViewCell: UICollectionViewCell {
 	// MARK: Private
 	
 	private func configureUI() {
+		self.backgroundColor = .purple.withAlphaComponent(0.6)
+		
 		self.addSubview(self.dateLabel)
 		self.dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
 		self.dateLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

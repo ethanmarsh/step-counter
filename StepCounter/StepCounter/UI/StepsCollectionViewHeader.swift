@@ -30,9 +30,6 @@ class StepsCollectionViewHeader: UICollectionReusableView {
 		self.addSubview(self.titleLabel)
 
 		self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-		self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-		self.titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-		
 		self.titleLabel.sizeToFit()
 	}
 }

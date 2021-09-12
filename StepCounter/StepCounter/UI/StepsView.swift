@@ -12,6 +12,8 @@ class StepsView: UIView {
 	private struct Constants {
 		static let stepsViewCellIdentifier = "StepsViewCell"
 		static let stepsHeaderIdentifier = "StepsHeader"
+		static let collectionViewItemSpacing: CGFloat = 16
+		static let collectionViewHorizontalMargins: CGFloat = 32
 	}
 	
 	let collectionView = UICollectionView(
@@ -62,7 +64,6 @@ class StepsView: UIView {
 		collectionView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
 		collectionView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1).isActive = true
 		collectionView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
-		collectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
 		collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
 	}
 }
@@ -124,9 +125,9 @@ extension StepsView: UICollectionViewDelegateFlowLayout {
 	) -> UIEdgeInsets {
 		return UIEdgeInsets(
 			top: 0,
-			left: 32,
+			left: Constants.collectionViewHorizontalMargins,
 			bottom: 0,
-			right: 32
+			right: Constants.collectionViewHorizontalMargins
 		)
 	}
 	
@@ -135,7 +136,7 @@ extension StepsView: UICollectionViewDelegateFlowLayout {
 		layout collectionViewLayout: UICollectionViewLayout,
 		minimumInteritemSpacingForSectionAt section: Int
 	) -> CGFloat {
-		16
+		Constants.collectionViewItemSpacing
 	}
 	
 	func collectionView(
@@ -143,7 +144,7 @@ extension StepsView: UICollectionViewDelegateFlowLayout {
 		layout collectionViewLayout: UICollectionViewLayout,
 		minimumLineSpacingForSectionAt section: Int
 	) -> CGFloat {
-		16
+		Constants.collectionViewItemSpacing
 	}
 	
 	func collectionView(
@@ -151,7 +152,8 @@ extension StepsView: UICollectionViewDelegateFlowLayout {
 		layout collectionViewLayout: UICollectionViewLayout,
 		sizeForItemAt indexPath: IndexPath
 	) -> CGSize {
-		return CGSize(width: self.frame.width, height: 50)
+		let width = self.frame.width - (Constants.collectionViewHorizontalMargins*2)
+		return CGSize(width: width, height: 50)
 	}
 	
 	func collectionView(
