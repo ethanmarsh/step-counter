@@ -9,7 +9,9 @@ import UIKit
 
 class StepsViewController: UIViewController {
 	private lazy var stepsView: StepsView = {
-		StepsView(stepDataProvider: self.stepDataProvider)
+		let stepsView = StepsView(stepDataProvider: self.stepDataProvider)
+		stepsView.delegate = self
+		return stepsView
 	}()
 	
 	private lazy var stepDataProvider: StepDataProvider = {
@@ -41,6 +43,15 @@ class StepsViewController: UIViewController {
 		self.view = self.stepsView
 		self.navigationController?.navigationBar.prefersLargeTitles = true
 		self.title = "Step Counter"
+		self.navigationController?.navigationBar.sizeToFit()
+	}
+}
+
+extension StepsViewController: StepsViewDelegate {
+	func didSelectCell(with data: StepsViewModel) {
+		/// Display detail view for day
+		let detailViewController = StepsDetailViewController(viewModel: data)
+		self.navigationController?.pushViewController(detailViewController, animated: true)
 	}
 }
 

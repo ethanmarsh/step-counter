@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol StepsViewDelegate: AnyObject {
+	func didSelectCell(with data: StepsViewModel)
+}
+
 class StepsView: UIView {
 	private struct Constants {
 		static let stepsViewCellIdentifier = "StepsViewCell"
@@ -16,6 +20,8 @@ class StepsView: UIView {
 		
 		static let numberOfDaysToDisplay = 10
 	}
+	
+	weak var delegate: StepsViewDelegate?
 	
 	let collectionView = UICollectionView(
 		frame: .zero,
@@ -79,12 +85,12 @@ extension StepsView: UICollectionViewDataSource {
 		}
 		
 		self.stepDataProvider.getStepData(forDayFromToday: indexPath.row) { stepData, error in
-			guard let stepData = stepData else {
+			guard let stepData = stepData, let date = DateUtils.date(from: indexPath.row) else {
 				return
 			}
 			DispatchQueue.main.async {
-				cell.set(numberOfSteps: stepData.numberOfSteps.intValue)
-				cell.setDayCountingBackFromToday(indexPath.row)
+				let viewModel = StepsViewModel(dayIndex: indexPath.row, date: date, stepData: stepData)
+				cell.customizeCell(using: viewModel)
 			}
 		}
 		
@@ -97,7 +103,33 @@ extension StepsView: UICollectionViewDelegate {
 		_ collectionView: UICollectionView,
 		didSelectItemAt indexPath: IndexPath
 	) {
+		guard let cell = collectionView.cellForItem(at: indexPath) as? StepsCollectionViewCell else {
+			print("Couldn't retrive cell at index path \(indexPath)")
+			return
+		}
 		
+		guard let viewModel = cell.viewModel else {
+			print("Couldn't retrieve view model for cell at index path \(indexPath)")
+			return
+		}
+		
+		self.delegate?.didSelectCell(with: viewModel)
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+		guard let cell = collectionView.cellForItem(at: indexPath) else {
+			return
+		}
+		
+		cell.backgroundColor = .cyan
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+		guard let cell = collectionView.cellForItem(at: indexPath) else {
+			return
+		}
+		
+		cell.backgroundColor = .purple.withAlphaComponent(0.6)
 	}
 }
 

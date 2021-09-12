@@ -13,15 +13,7 @@ class StepsCollectionViewCell: UICollectionViewCell {
 		static let stepsLabelFormat = "Steps - "
 	}
 	
-	private static let dateFormatter: DateFormatter = {
-		let formatter = DateFormatter()
-		if let locale = Locale.preferredLanguages.first {
-			formatter.locale = Locale(identifier: locale)
-		}
-		
-		formatter.setLocalizedDateFormatFromTemplate("M.d.yyyy")
-		return formatter
-	}()
+	var viewModel: StepsViewModel?
 	
 	private lazy var dateLabel: UILabel = {
 		let label = UILabel()
@@ -52,28 +44,10 @@ class StepsCollectionViewCell: UICollectionViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	func set(numberOfSteps: Int) {
-		self.stepsLabel.text = Constants.stepsLabelFormat + "\(numberOfSteps)"
-	}
-	
-	func setDayCountingBackFromToday(_ day: Int) {
-		let dayString: String = {
-			if day == 0 {
-				return "Today"
-			} else if day == 1 {
-				return "Yesterday"
-			} else {
-				let calendar = Calendar.current
-				let startOfToday = calendar.startOfDay(for: Date())
-				guard let date = calendar.date(byAdding: .day, value: -day, to: startOfToday) else {
-					return ""
-				}
-				
-				return Self.dateFormatter.string(from: date)
-			}
-		}()
-		
-		self.dateLabel.text = dayString
+	func customizeCell(using viewModel: StepsViewModel) {
+		self.set(numberOfSteps: viewModel.numberOfSteps)
+		self.setDayCountingBackFromToday(viewModel.dayIndex)
+		self.viewModel = viewModel
 	}
 	
 	// MARK: Private
@@ -88,5 +62,13 @@ class StepsCollectionViewCell: UICollectionViewCell {
 		self.addSubview(self.stepsLabel)
 		self.stepsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
 		self.stepsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+	}
+	
+	private func set(numberOfSteps: Int) {
+		self.stepsLabel.text = Constants.stepsLabelFormat + "\(numberOfSteps)"
+	}
+	
+	private func setDayCountingBackFromToday(_ day: Int) {
+		self.dateLabel.text = DateUtils.naturalLanguageDate(from: day)
 	}
 } 
