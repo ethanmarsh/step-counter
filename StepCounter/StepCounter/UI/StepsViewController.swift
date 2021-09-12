@@ -9,7 +9,16 @@ import UIKit
 
 class StepsViewController: UIViewController {
 	private lazy var stepsView: StepsView = {
-		StepsView()
+		StepsView(stepDataProvider: self.stepDataProvider)
+	}()
+	
+	private lazy var stepDataProvider: StepDataProvider = {
+		let realProvider = CMStepDataProvider()
+		if realProvider.isStepCountingAvailable {
+			return realProvider
+		} else {
+			return MockStepDataProvider()
+		}
 	}()
 	
 	init() {

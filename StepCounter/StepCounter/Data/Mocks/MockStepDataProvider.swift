@@ -21,6 +21,23 @@ class MockStepDataProvider: StepDataProvider {
 		self.stepDictionary = stepDictionary
 	}
 	
+	convenience init() {
+		let calendar = Calendar.current
+		let startOfToday = calendar.startOfDay(for: Date())
+		var stepDictionary: StepDictionary = [:]
+		
+		for day in 0...9 {
+			guard let date = calendar.date(byAdding: .day, value: -day, to: startOfToday) else {
+				continue
+			}
+			// Put a different number of steps into each day
+			let steps = MockPedometerData(numberOfSteps: NSNumber(integerLiteral: 100 * day))
+			stepDictionary[date] = steps
+		}
+		
+		self.init(stepDictionary: stepDictionary)
+	}
+	
 	func getStepData(from: Date, to: Date, _ completion: @escaping StepDataHandler) {
 		if !self.isStepCountingAvailable {
 			completion(nil, StepDataError.notAvailable)
