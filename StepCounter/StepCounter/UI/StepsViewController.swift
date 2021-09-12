@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  StepsViewController.swift
 //  StepCounter
 //
 //  Created by Ethan Marsh on 9/11/21.
@@ -39,6 +39,8 @@ class StepsViewController: UIViewController {
 	
 	private func configureUI() {
 		self.view = self.stepsView
+		self.navigationController?.navigationBar.prefersLargeTitles = true
+		self.title = "Step Counter"
 	}
 }
 

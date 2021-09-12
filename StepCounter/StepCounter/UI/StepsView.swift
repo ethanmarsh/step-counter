@@ -11,9 +11,10 @@ import UIKit
 class StepsView: UIView {
 	private struct Constants {
 		static let stepsViewCellIdentifier = "StepsViewCell"
-		static let stepsHeaderIdentifier = "StepsHeader"
 		static let collectionViewItemSpacing: CGFloat = 16
 		static let collectionViewHorizontalMargins: CGFloat = 32
+		
+		static let numberOfDaysToDisplay = 10
 	}
 	
 	let collectionView = UICollectionView(
@@ -36,7 +37,7 @@ class StepsView: UIView {
 	// MARK: Private
 	
 	private func configureUI() {
-		self.backgroundColor = .blue
+		self.backgroundColor = .systemBackground
 		
 		let collectionView = self.collectionView
 		
@@ -54,11 +55,6 @@ class StepsView: UIView {
 			StepsCollectionViewCell.self,
 			forCellWithReuseIdentifier: Constants.stepsViewCellIdentifier
 		)
-		collectionView.register(
-			StepsCollectionViewHeader.self,
-			forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-			withReuseIdentifier: Constants.stepsHeaderIdentifier
-		)
 		
 		self.addSubview(collectionView)
 		collectionView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
@@ -70,7 +66,7 @@ class StepsView: UIView {
 
 extension StepsView: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		10
+		Constants.numberOfDaysToDisplay
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -93,18 +89,6 @@ extension StepsView: UICollectionViewDataSource {
 		}
 		
 		return cell
-	}
-	
-	func collectionView(
-		_ collectionView: UICollectionView,
-		viewForSupplementaryElementOfKind kind: String,
-		at indexPath: IndexPath
-	) -> UICollectionReusableView {
-		self.collectionView.dequeueReusableSupplementaryView(
-			ofKind: kind,
-			withReuseIdentifier: Constants.stepsHeaderIdentifier,
-			for: indexPath
-		)
 	}
 }
 
@@ -154,14 +138,5 @@ extension StepsView: UICollectionViewDelegateFlowLayout {
 	) -> CGSize {
 		let width = self.frame.width - (Constants.collectionViewHorizontalMargins*2)
 		return CGSize(width: width, height: 50)
-	}
-	
-	func collectionView(
-		_ collectionView: UICollectionView,
-		layout collectionViewLayout: UICollectionViewLayout,
-		referenceSizeForHeaderInSection section: Int
-	) -> CGSize {
-		// Width is unused, we only care about height
-		CGSize(width: 1, height: 60)
 	}
 }

@@ -22,7 +22,6 @@
 		2262FEDE26ED2E6C00357EB6 /* StepDataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEDD26ED2E6C00357EB6 /* StepDataError.swift */; };
 		2262FEE026ED390500357EB6 /* CMStepDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEDF26ED390500357EB6 /* CMStepDataProvider.swift */; };
 		2262FEE226EE30E400357EB6 /* StepsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEE126EE30E400357EB6 /* StepsCollectionViewCell.swift */; };
-		2262FEE426EE32B600357EB6 /* StepsCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262FEE326EE32B600357EB6 /* StepsCollectionViewHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +62,6 @@
 		2262FEDD26ED2E6C00357EB6 /* StepDataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDataError.swift; sourceTree = "<group>"; };
 		2262FEDF26ED390500357EB6 /* CMStepDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMStepDataProvider.swift; sourceTree = "<group>"; };
 		2262FEE126EE30E400357EB6 /* StepsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsCollectionViewCell.swift; sourceTree = "<group>"; };
-		2262FEE326EE32B600357EB6 /* StepsCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsCollectionViewHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				2262FEE126EE30E400357EB6 /* StepsCollectionViewCell.swift */,
-				2262FEE326EE32B600357EB6 /* StepsCollectionViewHeader.swift */,
 				2262FECD26ED0DBA00357EB6 /* StepsView.swift */,
 				2262FBFE26ECF7DD00357EB6 /* StepsViewController.swift */,
 			);
@@ -312,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2262FED426ED12AE00357EB6 /* StepDataProvider.swift in Sources */,
-				2262FEE426EE32B600357EB6 /* StepsCollectionViewHeader.swift in Sources */,
 				2262FECE26ED0DBA00357EB6 /* StepsView.swift in Sources */,
 				2262FBFF26ECF7DD00357EB6 /* StepsViewController.swift in Sources */,
 				2262FEE226EE30E400357EB6 /* StepsCollectionViewCell.swift in Sources */,
